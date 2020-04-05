@@ -1,0 +1,60 @@
+.box7{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+.box7 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.btn-square-slant {
+    display: inline-block;
+    position: relative;
+    padding: 0.5em 1.4em;
+    text-decoration: none;
+    background: darkcyan;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 5px darkslategray;/*ボタン色より暗めに*/
+    border-right: solid 5px darkslategray;/*ボタン色より暗めに*/
+  }
+  
+  .btn-square-slant:before {  
+    content: " ";
+    position: absolute;
+    bottom: -5px;
+    left: -1px;
+    width: 0;
+    height: 0;
+    border-width: 0 6px 6px 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-bottom-color: #FFF;
+  }
+  
+  .btn-square-slant:after {  
+    content: " ";
+    position: absolute;
+    top: -1px;
+    right: -5px;
+    width: 0;
+    height: 0;
+    border-width: 0px 6px 6px 0px;
+    border-style: solid;
+    border-color: #FFF;
+    border-bottom-color: transparent;
+  }
+  
+  .btn-square-slant:active {
+    /*ボタンを押したとき*/
+    border:none;
+    -webkit-transform: translate(6px,6px);
+    transform: translate(6px,6px);
+  }
+  
+  .btn-square-slant:active:after, .btn-square-slant:active:before {
+    content: none;/*ボタンを押すと線が消える*/
+  }

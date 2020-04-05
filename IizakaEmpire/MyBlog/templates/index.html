@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Blog of AdmiralHonda</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{%static 'index.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <!--header-->
+            <div class="row">
+                <div  class="col-xs-12" style="background-color: darkcyan;color:white;">
+                    <h1>Blog of AdmiralHonda</h1>
+                    <p>プログラミングや趣味のアウトドアについて色々</p>
+                </div>
+            </div>
+            <!--ArticleList-->
+            <div class="row">
+                <div class="col-xs-8" style="background-color:cornsilk;">
+                    <h3>最近の更新</h3>
+                    {% if article %}
+                    {% for topic in article %}
+                    <div class="box7">
+                        <div class="media-left">
+                            <img src="{{topic.ogp_img.url}}" class="media-object" style="width: 250px;height:250px">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">{{topic.title}}</h3>
+                            <p>{{topic.meta_description}}</p>
+                        </div>
+                        <center>
+                            <form action="{% url 'blog' topic.id %}">
+                                <button class="btn-square-slant" type="submit">READ MORE</button>
+                            </form>
+                        </center>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>ただいま障害が発生中です。少々お待ちください</p>
+                    {% endif %}
+                </div>
+                <div class="col-xs-4" style="background-color: bisque;">
+                    <div>
+                        <div style="background-color: brown;width: 100px;; height:100px;"></div>
+                        <h4>AdmiralHonda</h4>
+                        <p>就活から逃げて院に進学</p>
+                        <p>なぜブログを始めたかって？アウトプットは大事だからよ（ハスっているわけではないよ）</p>
+                        <p>数学やプログラミングに関してはうちの教授のモットーである「勘のいい小学生でも理解できる」をモットーにしています。</p>
+                    </div>
+                    <!--↑profile-->
+                </div>
+                <!--↑-->
+            </div>
+        </div>
+    </body>
+</html>
