@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Blog of AdmiralHonda</title>
+        <title>AdmiralHondaの航海日誌</title>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{%static 'index.css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -28,14 +28,14 @@
                     {% for topic in article %}
                     <div class="box7">
                         <div class="media-left">
-                            <img src="{{topic.ogp_img.url}}" class="media-object" style="width: 250px;height:250px">
+                            <img src="{{MEDIA_URL}}{{topic.3}}" class="media-object" style="width: 250px;height:250px">
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">{{topic.title}}</h3>
-                            <p>{{topic.meta_description}}</p>
+                            <h3 class="media-heading">{{topic.1}}</h3>
+                            <p>{{topic.2}}</p>
                         </div>
                         <center>
-                            <form action="{% url 'blog' topic.id %}">
+                            <form action="{% url 'blog' topic.0 %}">
                                 <button class="btn-square-slant" type="submit">READ MORE</button>
                             </form>
                         </center>

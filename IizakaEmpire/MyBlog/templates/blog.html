@@ -3,13 +3,64 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'index.css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>AdmiralHondaの業務日誌</title>
+        <title>AdmiralHondaの航海日誌</title>
     </head>
-    
+
     <body>
-        {{article.exchange_markdown|safe}}
+        <div class="container">
+            <div class="row">
+                <div  class="col-xs-12" style="background-color: darkcyan;color:white;">
+                    <h1>Blog of AdmiralHonda</h1>
+                    <p>プログラミングや趣味のアウトドアについて色々</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {{article.pub_date}}
+                    <article>
+                        {{article.exchange_markdown|safe}}
+                    </article>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-2">
+                    <button><</button>
+                </div>
+                <div class="col-xs-2">
+                    <form action="{%url 'index'%}">
+                        <button type="submit">home</button>
+                    </form>
+                </div>
+                <div class="col-xs-2">
+                    <button>></button>
+                </div>
+                <div class="col-xs-3"></div>
+            </div>
+            <div class="row">
+                {%if recommend%}
+                {% for article in recommend %}
+                    <div class="col-xs-3">
+                        <a href="{% url 'blog' article.0 %}">
+                            <div class="thumbnail">
+                                <img src="{{MEDIA_URL}}{{article.2}}" style="width: 100;" alt="srticle.0">
+                            </div>
+                            <div class="caption">
+                                <p>{{article.1}}</p>
+                            </div>
+                        </a>
+                    </div>
+                {%endfor%}
+                {%else%}
+                {%endif%}
+            </div>
+
+        </div>
+        <!--page end-->
     </body>
 </html>
