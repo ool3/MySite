@@ -6,21 +6,22 @@ from markdownx.utils import markdownify
 
 class Category(models.Model):
     name=models.CharField(max_length=16)
-    slug=models.SlugField(max_length=8)
+    slug=models.SlugField(max_length=8,unique=True)
 
     def __str__(self):
         return self.name
 
 class Tag(models.Model):
     name=models.CharField(max_length=16)
-    slug=models.SlugField(max_length=8)
+    slug=models.SlugField(max_length=8,unique=True)
     
     def __str__(self):
         return self.name
 
 class Article(models.Model):
-    category=models.ForeignKey(Category,on_delete=models.CASCADE,blank=True, null=True)
-    tags=models.ManyToManyField(Tag,blank=True)
+    slug=models.SlugField(max_length=16,unique=True)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
+    tags=models.ManyToManyField(Tag)
     title=models.CharField(max_length=64)
     meta_description=models.CharField(max_length=64)
     ogp_title=models.CharField(max_length=32)
@@ -35,5 +36,16 @@ class Article(models.Model):
     class Meta:
         ordering=['-pub_date']
 
+    def exchange_markdown(self):
+        return markdownify(self.contents)
+
+class Author(models.Model):
+    profimg=models.ImageField(upload_to='author/')
+    name=models.CharField(max_length=16)
+    contents=MarkdownxField('Contents',help_text='To Put your profile')
+
+    def __str__(self):
+        return self.name
+    
     def exchange_markdown(self):
         return markdownify(self.contents)

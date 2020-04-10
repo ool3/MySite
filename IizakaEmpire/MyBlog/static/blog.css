@@ -59,6 +59,36 @@
     content: none;/*ボタンを押すと線が消える*/
   }
 
+  
+  h1 {
+    position: relative;
+    padding-left: 25px;
+  }
+  
+  h1:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px darkcyan;
+  }
+  h1:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px darkcyan;
+  }
+
+  h2 {
+    background: linear-gradient(transparent 70%, darkcyan 70%);
+  }
+
   .box27 {
     position: relative;
     margin: 2em 0;

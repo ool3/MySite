@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {%load static%}
-        <link rel="stylesheet" type="text/css" href="{%static 'index.css' %}">
+        <link rel="stylesheet" type="text/css" href="{%static 'blog.css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,7 +21,23 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    {{article.pub_date}}
+                    <center>
+                        <h1>
+                            {{article.title}}
+                        </h1>
+                    </center>
+                    <p style="float: right;">更新日<br>{{article.up_date}}</p>
+                    {%if category%}
+                    <button onclick="location.href='{% url 'category' category.slug 1 %}'">{{category.name}}</button>
+                    <br>
+                    {%else%}
+                    {%endif%}
+                    {%if tags %}
+                    {% for tag in tags %}
+                    <button onclick="location.href='{%url 'category' tag.slug 2 %}'">{{tag.name}}</button>
+                    {%endfor%}
+                    {%else%}
+                    {%endif%}
                     <article>
                         {{article.exchange_markdown|safe}}
                     </article>
@@ -33,9 +49,7 @@
                     <button><</button>
                 </div>
                 <div class="col-xs-2">
-                    <form action="{%url 'index'%}">
-                        <button type="submit">home</button>
-                    </form>
+                    <button onclick="location.href='{%url 'index'%}'">home</button>
                 </div>
                 <div class="col-xs-2">
                     <button>></button>
@@ -46,7 +60,7 @@
                 {%if recommend%}
                 {% for article in recommend %}
                     <div class="col-xs-3">
-                        <a href="{% url 'blog' article.0 %}">
+                        <a href="{% url 'blog' article.4 article.0 %}">
                             <div class="thumbnail">
                                 <img src="{{MEDIA_URL}}{{article.2}}" style="width: 100;" alt="srticle.0">
                             </div>

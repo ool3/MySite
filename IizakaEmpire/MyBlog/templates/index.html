@@ -27,6 +27,7 @@
                     {% if article %}
                     {% for topic in article %}
                     <div class="box7">
+                        <p>{{topic.4}}</p>
                         <div class="media-left">
                             <img src="{{MEDIA_URL}}{{topic.3}}" class="media-object" style="width: 250px;height:250px">
                         </div>
@@ -35,23 +36,46 @@
                             <p>{{topic.2}}</p>
                         </div>
                         <center>
-                            <form action="{% url 'blog' topic.0 %}">
-                                <button class="btn-square-slant" type="submit">READ MORE</button>
-                            </form>
+                            <button class="btn-square-slant" onclick="location.href='{% url 'blog' topic.6 topic.0 %}'">READ MORE</button>
                         </center>
                     </div>
                     {% endfor %}
+                    <center>
+                    <ul class="pagination">
+                        <!--{%if previous_page%}
+                        <li><a href="?page={{previous_page}}">前のページ</a></li>
+                        {%else%}
+                        {%endif%}-->
+                            {%for page in page_num%}
+                            {%if page == current_page %}
+                            <li class="active"><a href="?page={{page}}">{{page}}</a></li>
+                            {%else%}
+                            <li><a href="?page={{page}}">{{page}}</a></li>
+                            {%endif%}
+                            {%endfor%}
+                            <!--
+                        {%if next_page%}
+                        <li><a href="?page={{next_page}}">次のページ</a></li>
+                        {%else%}
+                        {%endif%}-->
+                      </ul>
+                      </center>
                     {% else %}
                     <p>ただいま障害が発生中です。少々お待ちください</p>
                     {% endif %}
                 </div>
                 <div class="col-xs-4" style="background-color: bisque;">
-                    <div>
-                        <div style="background-color: brown;width: 100px;; height:100px;"></div>
-                        <h4>AdmiralHonda</h4>
-                        <p>就活から逃げて院に進学</p>
-                        <p>なぜブログを始めたかって？アウトプットは大事だからよ（ハスっているわけではないよ）</p>
-                        <p>数学やプログラミングに関してはうちの教授のモットーである「勘のいい小学生でも理解できる」をモットーにしています。</p>
+                    <div class="box27">
+                        <span class="box-title">Author</span>
+                        {%if author%}
+                        <center>
+                            <img src="{{author.0.profimg.url}}" style="width: 200px;height:200px">
+                            </center>
+                            <h4>{{author.0.name}}</h4>
+                            {{author.0.exchange_markdown|safe}}
+                        {%else%}
+                        <p>まだないみたい</p>
+                        {%endif%}
                     </div>
                     <!--↑profile-->
                 </div>
