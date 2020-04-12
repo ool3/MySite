@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="dscription" content="AdmiralHondaの人生という航海の中での日誌">
         <title>AdmiralHondaの航海日誌</title>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{%static 'index.css' %}">
@@ -22,7 +24,7 @@
             </div>
             <!--ArticleList-->
             <div class="row">
-                <div class="col-xs-8" style="background-color:cornsilk;">
+                <div class="col-xs-8">
                     <h3>最近の更新</h3>
                     {% if article %}
                     {% for topic in article %}
@@ -64,7 +66,7 @@
                     <p>ただいま障害が発生中です。少々お待ちください</p>
                     {% endif %}
                 </div>
-                <div class="col-xs-4" style="background-color: bisque;">
+                <div class="col-xs-4">
                     <div class="box27">
                         <span class="box-title">Author</span>
                         {%if author%}

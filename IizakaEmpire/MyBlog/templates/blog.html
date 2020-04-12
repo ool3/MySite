@@ -3,12 +3,22 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="{{article.meta_description}}">
+        <meta property="og:url" content="{% url blog article.category.slug article.slug %}">
+        <meta property="og:title" content="{{article.ogp.title}}">
+        <meta proparty="og:description" content="{{article.meta_description}}">
+        <meta proparty="og:image" content="{{article.ogp_img.url}}">
+        <meta proparty="og:type" content="{{article.category.slug}}">
+        <meta proparty="og:site_name" content="AdmiralHondaの航海日誌">
+        <meta proparty="og:locale" content="ja_JP">
+
         {%load static%}
         <link rel="stylesheet" type="text/css" href="{%static 'blog.css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>AdmiralHondaの航海日誌</title>
+        <title>{{article.title}}</title>
     </head>
 
     <body>
@@ -28,13 +38,13 @@
                     </center>
                     <p style="float: right;">更新日<br>{{article.up_date}}</p>
                     {%if category%}
-                    <button onclick="location.href='{% url 'category' category.slug 1 %}'">{{category.name}}</button>
+                    <button class="btn-square-shadow" onclick="location.href='{% url 'category' category.slug 1 %}'">{{category.name}}</button>
                     <br>
                     {%else%}
                     {%endif%}
                     {%if tags %}
                     {% for tag in tags %}
-                    <button onclick="location.href='{%url 'category' tag.slug 2 %}'">{{tag.name}}</button>
+                    <button class="btn-square-shadow" onclick="location.href='{%url 'category' tag.slug 2 %}'">{{tag.name}}</button>
                     {%endfor%}
                     {%else%}
                     {%endif%}

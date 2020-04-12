@@ -58,8 +58,28 @@
   .btn-square-slant:active:after, .btn-square-slant:active:before {
     content: none;/*ボタンを押すと線が消える*/
   }
-
+  ul {
+    padding: 0;
+  }
   
+  ul li, ol li {
+    color: #404040;
+    border-left: solid 6px darkcyan;/*左側の線*/
+    border-bottom: solid 2px #dadada;/*下に灰色線*/
+    background: whitesmoke;
+    margin-bottom: 5px;/*下のバーとの余白*/
+    line-height: 1.5;
+    padding: 0.5em;
+    list-style-type: none!important;/*ポチ消す*/
+    font-weight: bold;
+  }
+
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
   h1 {
     position: relative;
     padding-left: 25px;
@@ -112,4 +132,21 @@
 .box27 p {
     margin: 0; 
     padding: 0;
+}
+
+.btn-square-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: darkcyan;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn-square-shadow:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
 }
