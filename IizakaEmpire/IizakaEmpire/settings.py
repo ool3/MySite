@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'MyBlog.apps.MyblogConfig',#myblog_app
     'markdownx',#markdown
     'django_cleanup',#for rm image
+    'django.contrib.sites',#for sitemap
+    'django.contrib.sitemaps',#for sitemap
 ]
+
+SITE_ID=1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

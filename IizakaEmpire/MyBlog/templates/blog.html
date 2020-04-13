@@ -38,13 +38,13 @@
                     </center>
                     <p style="float: right;">更新日<br>{{article.up_date}}</p>
                     {%if category%}
-                    <button class="btn-square-shadow" onclick="location.href='{% url 'category' category.slug 1 %}'">{{category.name}}</button>
+                    <button class="btn-square-shadow" onclick="location.href='{% url 'MyBlog:search' category.slug 1 %}'">{{category.name}}</button>
                     <br>
                     {%else%}
                     {%endif%}
                     {%if tags %}
                     {% for tag in tags %}
-                    <button class="btn-square-shadow" onclick="location.href='{%url 'category' tag.slug 2 %}'">{{tag.name}}</button>
+                    <button class="btn-square-shadow" onclick="location.href='{%url 'Myblog:search' tag.slug 2 %}'">{{tag.name}}</button>
                     {%endfor%}
                     {%else%}
                     {%endif%}
@@ -59,7 +59,7 @@
                     <button><</button>
                 </div>
                 <div class="col-xs-2">
-                    <button onclick="location.href='{%url 'index'%}'">home</button>
+                    <button onclick="location.href='{%url 'MyBlog:index'%}'">home</button>
                 </div>
                 <div class="col-xs-2">
                     <button>></button>
@@ -70,7 +70,7 @@
                 {%if recommend%}
                 {% for article in recommend %}
                     <div class="col-xs-3">
-                        <a href="{% url 'blog' article.4 article.0 %}">
+                        <a href="{% url 'MyBlog:blog' article.4 article.0 %}">
                             <div class="thumbnail">
                                 <img src="{{MEDIA_URL}}{{article.2}}" style="width: 100;" alt="srticle.0">
                             </div>

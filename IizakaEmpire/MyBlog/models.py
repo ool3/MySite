@@ -1,7 +1,7 @@
 from django.db import models
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
-
+from django.urls import reverse
 # Create your models here.
 
 class Category(models.Model):
@@ -28,7 +28,7 @@ class Article(models.Model):
     ogp_img=models.ImageField(upload_to='ogp_img')
     pub_date=models.DateTimeField('作成日時',auto_now_add=True)
     up_date=models.DateTimeField('更新日時',auto_now=True)
-    contents=MarkdownxField('Contents',help_text='To Put Artile')
+    contents=MarkdownxField('Contents',help_text='box9 is note box<div>')
     
     def __str__(self):
         return self.title
@@ -38,6 +38,12 @@ class Article(models.Model):
 
     def exchange_markdown(self):
         return markdownify(self.contents)
+
+   # def get_absolute_url(self):
+    #    return reverse('MyBlog:blog',kwargs={
+     #       'div':self.category.slug,
+      #      'blog_id':self.slug,
+       # })
 
 class Author(models.Model):
     profimg=models.ImageField(upload_to='author/')

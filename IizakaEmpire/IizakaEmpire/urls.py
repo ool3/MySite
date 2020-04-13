@@ -17,11 +17,19 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import MyBlogSitemap,StaticSitemap
+
+sitemaps={
+    'blog':MyBlogSitemap,
+    'static':StaticSitemap,
+}
 
 urlpatterns = [
-    path('',include('MyBlog.urls')),
+    path('',include('MyBlog.urls',namespace='AdHnd')),
     path('admin/', admin.site.urls),
     path('markdownx/',include('markdownx.urls')),
+    path('sitemap.xml',sitemap,{'sitemaps' : sitemaps},name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 if settings.DEBUG:
